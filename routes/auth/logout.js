@@ -3,7 +3,7 @@ import express from "express";
 // Create a new router
 const router = express.Router();
 
-// Register a new user
+// POST /auth/logout
 router.post("/", async (req, res) => {
   // Clear the token cookie
   res.clearCookie("token");

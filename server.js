@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
+import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth/index.js";
 
 // Load environment variables from .env file
@@ -20,6 +21,9 @@ app.use(
 
 // Middleware to parse JSON request bodies
 app.use(express.json());
+
+// Middleware to parse cookies
+app.use(cookieParser());
 
 // Initialize Port and MongoDB URI
 const PORT = process.env.PORT || 8000;

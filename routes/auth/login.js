@@ -16,7 +16,7 @@ dotenv.config();
 // Initialize JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET;
 
-// Register a new user
+// POST /auth/login
 router.post("/", validateData(loginSchema), async (req, res) => {
   // Extract the email and password from the request body
   const { email, password } = req.body;

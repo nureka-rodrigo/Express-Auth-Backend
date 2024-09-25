@@ -8,7 +8,7 @@ import { StatusCodes } from "http-status-codes";
 // Create a new router
 const router = express.Router();
 
-// Register a new user
+// POST /auth/register
 router.post("/", validateData(registerSchema), async (req, res) => {
   // Extract the user details from the request body
   const { firstName, lastName, email, password } = req.body;
