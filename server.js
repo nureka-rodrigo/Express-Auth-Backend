@@ -2,6 +2,7 @@ import express from "express";
 import dotenv from "dotenv";
 import mongoose from "mongoose";
 import cors from "cors";
+import authRoutes from "./routes/auth/index.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -17,7 +18,10 @@ app.use(
   })
 );
 
-// Port and MongoDB URI
+// Middleware to parse JSON request bodies
+app.use(express.json());
+
+// Initialize Port and MongoDB URI
 const PORT = process.env.PORT || 8000;
 const URI = process.env.MONGODB_URI;
 
@@ -31,3 +35,6 @@ mongoose
 app.listen(PORT, () => {
   console.log(`Server is running on port ${PORT}`);
 });
+
+// Authentication route handler
+app.use("/auth", authRoutes);
