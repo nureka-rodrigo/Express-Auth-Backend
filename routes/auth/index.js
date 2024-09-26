@@ -3,6 +3,7 @@ import signUpRoute from "./sign-up.js";
 import signInRoute from "./sign-in.js";
 import logoutRoute from "./logout.js";
 import validateToken from "./validate-token.js";
+import forgotEmail from "./forgot-email.js";
 
 // Create a new router
 const router = express.Router();
@@ -12,5 +13,6 @@ router.use("/sign-up", signUpRoute);
 router.use("/sign-in", signInRoute);
 router.use("/logout", logoutRoute);
 router.use("/validate-token", validateToken);
+router.use("/forgot-email", forgotEmail);
 
 export default router;
