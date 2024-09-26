@@ -1,6 +1,6 @@
 import { z } from "zod";
 
-export const forgotEmailSchema = z
+export const validateEmailSchema = z
   .object({
     email: z
     .string()

@@ -1,16 +1,16 @@
 import express from "express";
-import { User } from "../../models/user.js";
-import { Otp } from "../../models/otp.js";
-import { validateData } from "../../middlewares/validationMiddleware.js";
-import { forgotEmailSchema } from "../../validations/auth/forgot-email.js";
+import { User } from "../../../models/user.js";
+import { Otp } from "../../../models/otp.js";
+import { validateData } from "../../../middlewares/validationMiddleware.js";
+import { validateEmailSchema } from "../../../validations/auth/forgot/validate-email.js";
 import { StatusCodes } from "http-status-codes";
-import { sendMail } from "../../mail/nodemailer.js";
+import { sendMail } from "../../../mail/nodemailer.js";
 
 // Create a new router
 const router = express.Router();
 
-// POST /auth/forgot-email
-router.post("/", validateData(forgotEmailSchema), async (req, res) => {
+// POST /auth//forgot-password/validate-email
+router.post("/", validateData(validateEmailSchema), async (req, res) => {
   // Extract the email from the request body
   const { email } = req.body;
 
