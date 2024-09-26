@@ -10,7 +10,7 @@ const router = express.Router();
 // POST /auth//forgot-password/validate-otp
 router.post("/", validateData(validateOtpSchema), async (req, res) => {
   // Extract the OTP and email from the request body
-  const { otp, email } = req.body;
+  const { email, otp } = req.body;
 
   // Check if the OTP exists for the email
   const dbOtp = await Otp.findOne({ email: email, otp: otp }, null, null).exec();
