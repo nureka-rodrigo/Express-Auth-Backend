@@ -51,6 +51,9 @@ router.post("/", validateData(loginSchema), async (req, res) => {
     status: true,
     message: "Login successful",
     token,
+    firstName: user.firstName,
+    lastName: user.lastName,
+    email: user.email,
     role: user.role,
   });
 });

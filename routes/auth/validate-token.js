@@ -13,7 +13,7 @@ dotenv.config();
 // Initialize JWT secret key
 const JWT_SECRET = process.env.JWT_SECRET;
 
-// POST /auth/login
+// POST /auth/validate-token
 router.post("/", async (req, res) => {
   // Get the token from the cookie
   const token = req.cookies.token;
