@@ -32,7 +32,7 @@ router.post("/", validateData(resetPasswordSchema), async (req, res) => {
       .json({ status: false, message: "OTP expired" });
   }
 
-  // Update the password in the database
+  // Check if the user exists
   const user = await User.findOne({ email: email }, null, null).exec();
   if (!user) {
     return res
@@ -40,6 +40,7 @@ router.post("/", validateData(resetPasswordSchema), async (req, res) => {
       .json({ status: false, message: "User not found" });
   }
 
+  // Update the password in the database
   user.password = await bcrypt.hash(password, 10);
   await user.save();
 
