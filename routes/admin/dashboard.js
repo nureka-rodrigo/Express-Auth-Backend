@@ -1,6 +1,6 @@
 import express from "express";
-import {User} from "../../models/user.js";
-import {StatusCodes} from "http-status-codes";
+import { User } from "../../models/user.js";
+import { StatusCodes } from "http-status-codes";
 
 // Create a new router
 const router = express.Router();
@@ -9,9 +9,13 @@ const router = express.Router();
 router.get("/", async (req, res) => {
   try {
     const usersCount = await User.countDocuments().exec();
-    res.json({status: true, message: "Users retrieved successfully", data: {
-      users: usersCount,
-      }});
+    res.json({
+      status: true,
+      message: "Users retrieved successfully",
+      data: {
+        users: usersCount,
+      },
+    });
   } catch (e) {
     res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
       status: false,

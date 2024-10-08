@@ -10,10 +10,12 @@ export function validateData(schema) {
       if (error instanceof ZodError) {
         const errorMessages = error.errors.map((issue) => {
           // Check for a "required" message or other schema violation
-          const isRequiredError = issue.message.toLowerCase().includes("required");
+          const isRequiredError = issue.message
+            .toLowerCase()
+            .includes("required");
           return {
             message: isRequiredError
-              ? `${issue.path.join('.')} is required`
+              ? `${issue.path.join(".")} is required`
               : `${issue.message}`,
           };
         });
