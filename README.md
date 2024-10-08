@@ -37,7 +37,7 @@ Follow these steps:
 1. Clone the repository: `git clone https://github.com/nureka-rodrigo/Express-Auth-Backend.git`
 2. Navigate into the project directory: `cd Express-Auth-Backend`
 3. Install the dependencies: `npm install`
-4. Start the application: `npm start`
+4. Start the application: `npm run dev`
 
 The application will start running on `http://localhost:3000/`.
 
