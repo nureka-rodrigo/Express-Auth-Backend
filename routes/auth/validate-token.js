@@ -15,12 +15,13 @@ const JWT_SECRET = process.env.JWT_SECRET;
 
 // POST /auth/validate-token
 router.post("/", async (req, res) => {
-  // Get the token from the cookie
-  const token = req.cookies.token;
+  const token = req.headers.authorization?.split(" ")[1];
+
   if (!token) {
-    return res
-      .status(StatusCodes.UNAUTHORIZED)
-      .json({ status: false, message: "Unauthorized" });
+    return res.status(StatusCodes.UNAUTHORIZED).json({
+      status: false,
+      message: "Access denied. No token provided.",
+    });
   }
 
   try {
@@ -35,12 +36,12 @@ router.post("/", async (req, res) => {
     ).exec();
 
     // Send the user details
-    res.json({ status: true, user: user });
+    res.json({ status: true, message: "Token is valid", user: user });
   } catch (e) {
-    // Send an error response
-    res
-      .status(StatusCodes.UNAUTHORIZED)
-      .json({ status: false, message: "Unauthorized" });
+    res.status(StatusCodes.INTERNAL_SERVER_ERROR).json({
+      status: false,
+      message: "An error occurred while verifying token.",
+    });
   }
 });
 
