@@ -4,6 +4,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import cookieParser from "cookie-parser";
 import authRoutes from "./routes/auth/index.js";
+import adminRoutes from "./routes/admin/index.js";
 
 // Load environment variables from .env file
 dotenv.config();
@@ -42,3 +43,6 @@ app.listen(PORT, () => {
 
 // Authentication route handler
 app.use("/auth", authRoutes);
+
+// Admin route handler
+app.use("/admin", adminRoutes);
